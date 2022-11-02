@@ -26,7 +26,7 @@ module.exports = {
       updated: {
         type: Sequelize.DATE,
       },
-      categoryId: {
+      category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -36,9 +36,6 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-    },
-    {
-      underscored: true,
     });
   },
 

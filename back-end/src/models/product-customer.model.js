@@ -1,27 +1,26 @@
 module.exports = (sequelize, DataTypes) => {
   const ProductCustomer = sequelize.define('ProductCustomer', {
-    productId: DataTypes.INTEGER,
-    customerId: DataTypes.INTEGER,
-    purchaseDate: DataTypes.DATE,
+    product_id: DataTypes.INTEGER,
+    customer_id: DataTypes.INTEGER,
+    purchase_date: DataTypes.DATE,
   },
   {
     tableName: 'products_customers',
     timestamps: false,
-    underscored: true,
   });
 
   ProductCustomer.associate = (models) => {
     models.Product.belongsToMany(models.Customer, {
       as: 'customers',
-      foreignKey: 'productId',
-      otherKey: 'customerId',
+      foreignKey: 'product_id',
+      otherKey: 'customer_id',
       through: ProductCustomer,
     });
 
     models.Customer.belongsToMany(models.Product, {
       as: 'products',
-      foreignKey: 'customerId',
-      otherKey: 'productId',
+      foreignKey: 'customer_id',
+      otherKey: 'product_id',
       through: ProductCustomer,
     });
   };

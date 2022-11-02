@@ -11,19 +11,15 @@ const ProductModel = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     updated: DataTypes.DATE,
-    categoryId: DataTypes.INTEGER,
+    category_id: DataTypes.INTEGER,
   },
   {
-    table_name: 'products',
+    tableName: 'products',
     timestamps: false,
-    underscored: true,
   });
 
   Product.associate = (models) => {
-    Product.belongsTo(models.Category, {
-      foreignKey: 'category_id',
-      as: 'category',
-    });
+    Product.belongsTo(models.Category);
   };
 
   return Product;

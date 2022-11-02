@@ -13,7 +13,7 @@ module.exports = {
         quantity: 10,
         price: 2199.99,
         updated: new Date(),
-        categoryId: 1,
+        category_id: 1,
       },
       {
         id: 2,
@@ -22,7 +22,7 @@ module.exports = {
         quantity: 30,
         price: 10.79,
         updated: new Date(),
-        categoryId: 2,
+        category_id: 2,
       },
       {
         id: 3,
@@ -31,12 +31,9 @@ module.exports = {
         quantity: 2,
         price: 2199000.99,
         updated: new Date(),
-        categoryId: 3,
+        category_id: 3,
       },
-    ],
-    {
-      underscored: true,
-    });
+    ]);
   },
 
   async down (queryInterface, _Sequelize) {

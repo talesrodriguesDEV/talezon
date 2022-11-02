@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
     },
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
   },
   {
     tableName: 'categories',
-    timestamps: false
+    timestamps: false,
   })
 
   Category.associate = (models) => {
