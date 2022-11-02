@@ -1,14 +1,15 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "",
+  "description": "Talezon: e-commerce API",
   "main": "src/server.js",
   "scripts": {
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tales Rodrigues",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",

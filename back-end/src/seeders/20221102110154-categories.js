@@ -8,15 +8,15 @@ module.exports = {
     [
       {
         id: '1',
-        name: 'Smartphone',
+        name: 'Smartphones',
       },
       {
         id: '2',
-        name: 'Comida',
+        name: 'Foods',
       },
       {
         id: '3',
-        name: 'Carro',
+        name: 'Cars',
       },
     ]);
   },

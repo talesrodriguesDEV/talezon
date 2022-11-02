@@ -7,7 +7,6 @@ const ProductModel = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: DataTypes.STRING,
-    description: DataTypes.TEXT,
     quantity: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     updated: DataTypes.DATE,

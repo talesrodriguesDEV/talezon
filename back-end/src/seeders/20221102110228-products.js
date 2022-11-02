@@ -9,7 +9,6 @@ module.exports = {
       {
         id: 1,
         name: 'iPhone X',
-        description: 'aoba',
         quantity: 10,
         price: 2199.99,
         updated: new Date(),
@@ -17,8 +16,7 @@ module.exports = {
       },
       {
         id: 2,
-        name: 'Sopa',
-        description: 'KEKW',
+        name: 'Soup',
         quantity: 30,
         price: 10.79,
         updated: new Date(),
@@ -27,9 +25,8 @@ module.exports = {
       {
         id: 3,
         name: 'Gallardo',
-        description: 'eita',
         quantity: 2,
-        price: 2199000.99,
+        price: 1340000.00,
         updated: new Date(),
         category_id: 3,
       },
