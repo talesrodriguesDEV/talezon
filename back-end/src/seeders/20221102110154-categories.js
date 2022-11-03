@@ -8,15 +8,27 @@ module.exports = {
     [
       {
         id: '1',
-        name: 'Smartphones',
+        name: 'Clothes',
       },
       {
         id: '2',
-        name: 'Foods',
+        name: 'Food',
       },
       {
         id: '3',
-        name: 'Cars',
+        name: 'Vehicles',
+      },
+      {
+        id: '4',
+        name: 'Electronics',
+      },
+      {
+        id: '5',
+        name: 'Musical Instruments',
+      },
+      {
+        id: '6',
+        name: 'Sporting Goods',
       },
     ]);
   },
