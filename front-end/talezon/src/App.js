@@ -11,16 +11,16 @@ import NotFound from './pages/NotFound';
 function App() {
 	return (
 		<ProductsProvider>
-			<Layout>
-				<BrowserRouter>
+			<BrowserRouter>
+				<Layout>
 					<Routes>
-						<Route path='/' element={ <Home /> } />
-						<Route path='/login' element={ <Login /> } />
-						<Route path='/cart' element={ <Cart /> } />
-						<Route path='*' element={ <NotFound /> } />
+						<Route path='/' element={<Home />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/cart' element={<Cart />} />
+						<Route path='*' element={<NotFound />} />
 					</Routes>
-				</BrowserRouter>
-			</Layout>
+				</Layout>
+			</BrowserRouter>
 		</ProductsProvider>
 	);
 }

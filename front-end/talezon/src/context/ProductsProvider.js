@@ -4,6 +4,13 @@ import ProductsContext from './ProductsContext';
 
 export default function ProductsProvider({ children }) {
 	const [allProducts, setAllProducts] = useState([]);
+	const [customerLoggedIn, setCustomerLoggedIn] = useState(false);
+	const [customerSignedIn, setCustomerSignedIn] = useState(false);
+	const [userInfo, setUserInfo] = useState({
+		name: '',
+		email: '',
+		password: '',
+	});
 
 	useEffect(() => {
 		// https://back-end-production-0be2.up.railway.app/
@@ -14,6 +21,11 @@ export default function ProductsProvider({ children }) {
 
 	const objectValue = {
 		allProducts,
+		customerLoggedIn,
+		setCustomerLoggedIn,
+		customerSignedIn,
+		setCustomerSignedIn,
+		userInfo, setUserInfo,
 	};
 
 	return (
