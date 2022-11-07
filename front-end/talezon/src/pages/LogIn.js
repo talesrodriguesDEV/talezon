@@ -1,49 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ProductsContext from '../context/ProductsContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-	const { customerSignedIn, setCustomerSignedIn, userInfo, setUserInfo } = useContext(ProductsContext);
-	const { name, email, password } = userInfo;
+	const { setCustomerInfo, setToken, setCustomerLoggedIn } = useContext(ProductsContext);
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	const doLogIn = () => {
+	const navigate = useNavigate();
 
+	const handleLogIn = () => {
+		setCustomerInfo({ name, email, password });
+		localStorage.setItem('customerInfo', JSON.stringify({ name, email, password }));
+
+		fetch(
+			'http://localhost:3000/customers/signIn',
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, email, password }),
+			})
+			.then((response) => response.json())
+			.then(({ token }) => {
+				setCustomerLoggedIn(true);
+				setToken(token);
+				localStorage.setItem('customerToken', token);
+			});
+
+		navigate('/');
 	};
-
-	const doSignIn = () => {
-
-	}
-
-	const loginForm = () => (
-		<form className='flex flex-col' onSubmit={ doLogIn }>
-			<h1>Welcome back, {name}!</h1>
-			<label>Email: </label>
-			<input type='email' />
-			<label>Password: </label>
-			<input type='password' />
-			<button type='submit'>
-				Log in
-			</button>
-		</form>
-	);
-
-	const signInForm = () => (
-		<form className='flex flex-col' onSubmit={ doSignIn }>
-			<h1>Welcome to Talezon!</h1>
-			<label>What's your name? </label>
-			<input type='text' />
-			<label>What's your email: </label>
-			<input type='email' />
-			<label>Define a password: </label>
-			<input type='password' />
-			<button type='submit'>
-				Sign in
-			</button>
-		</form>
-	);
 
 	return (
 		<div>
-			{customerSignedIn ? loginForm() : signInForm()}
+			<form className='flex flex-col' onSubmit={handleLogIn}>
+				<h1>Welcome to Talezon!</h1>
+				<label>What's your name? </label>
+				<input type='text' onChange={({ target }) => setName(target.value)} />
+				<label>What's your email: </label>
+				<input type='email' onChange={({ target }) => setEmail(target.value)} />
+				<label>Define a password: </label>
+				<input type='password' onChange={({ target }) => setPassword(target.value)} />
+				<button type='submit'>
+					Start shopping!
+				</button>
+			</form>
 		</div>
 	);
 }

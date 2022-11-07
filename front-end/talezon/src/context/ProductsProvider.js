@@ -5,27 +5,33 @@ import ProductsContext from './ProductsContext';
 export default function ProductsProvider({ children }) {
 	const [allProducts, setAllProducts] = useState([]);
 	const [customerLoggedIn, setCustomerLoggedIn] = useState(false);
-	const [customerSignedIn, setCustomerSignedIn] = useState(false);
-	const [userInfo, setUserInfo] = useState({
-		name: '',
-		email: '',
-		password: '',
-	});
+	const [customerInfo, setCustomerInfo] = useState();
+	const [token, setToken] = useState('');
 
 	useEffect(() => {
 		// https://back-end-production-0be2.up.railway.app/
-		fetch(`http://localhost:3000/products`)
+		fetch('http://localhost:3000/products')
 			.then((response) => response.json())
 			.then((json) => setAllProducts(json));
+
+		const savedToken = localStorage.getItem('customerToken');
+		const savedCustomer = JSON.parse(localStorage.getItem('customerInfo'));
+
+		if (savedToken && savedCustomer) {
+			setCustomerInfo(savedCustomer);
+			setToken(savedToken);
+			setCustomerLoggedIn(true);
+		} 
 	}, []);
 
 	const objectValue = {
 		allProducts,
 		customerLoggedIn,
 		setCustomerLoggedIn,
-		customerSignedIn,
-		setCustomerSignedIn,
-		userInfo, setUserInfo,
+		customerInfo,
+		setCustomerInfo,
+		token,
+		setToken,
 	};
 
 	return (
