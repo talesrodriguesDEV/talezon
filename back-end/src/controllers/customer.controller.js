@@ -4,12 +4,12 @@ require('dotenv');
 
 const customerSignIn = async (req, res) => {
   const newCustomer = req.body;
-  await CustomerService.customerSignIn(newCustomer);
+  const {id} = await CustomerService.customerSignIn(newCustomer);
 
   delete newCustomer.password;
   const token = jwtUtils.generateToken(newCustomer);
 
-  res.status(201).json({ token });
+  res.status(201).json({ id, token });
 };
 
 const listCustomers = async (req, res) => {
