@@ -7,6 +7,7 @@ export default function ProductsProvider({ children }) {
 	const [customerLoggedIn, setCustomerLoggedIn] = useState(false);
 	const [customerInfo, setCustomerInfo] = useState();
 	const [token, setToken] = useState('');
+	const [cartProducts, setCartProducts] = useState([]);
 
 	useEffect(() => {
 		// https://back-end-production-0be2.up.railway.app/
@@ -16,11 +17,13 @@ export default function ProductsProvider({ children }) {
 
 		const savedToken = localStorage.getItem('customerToken');
 		const savedCustomer = JSON.parse(localStorage.getItem('customerInfo'));
+		const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
 
 		if (savedToken && savedCustomer) {
 			setCustomerInfo(savedCustomer);
 			setToken(savedToken);
 			setCustomerLoggedIn(true);
+			if (cartProducts) setCartProducts(cartProducts);
 		} 
 	}, []);
 
@@ -32,6 +35,8 @@ export default function ProductsProvider({ children }) {
 		setCustomerInfo,
 		token,
 		setToken,
+		cartProducts,
+		setCartProducts,
 	};
 
 	return (
