@@ -8,7 +8,7 @@ export default function ProductsProvider({ children }) {
 	const [customerInfo, setCustomerInfo] = useState();
 	const [token, setToken] = useState('');
 	const [cartProducts, setCartProducts] = useState([]);
-	const [customerId, setCustomerId] = useState(0);
+	const [customerId, setCustomerId] = useState();
 
 	useEffect(() => {
 		// https://back-end-production-0be2.up.railway.app/

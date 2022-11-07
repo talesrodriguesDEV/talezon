@@ -28,10 +28,10 @@ export default function Home() {
 
 	return (
 		<div className='flex flex-col items-center justify-around'>
-			<form className='flex flex-col w-1/3'>
-				<label>What do you need today?</label>
-				<input type='text' id='search-input' onChange={filterProducts} />
-				<select onChange={filterProductsByCategory}>
+			<form className='flex flex-col p-10 my-10 text-purple-900'>
+				<label className='text-4xl'>What do you need today?</label>
+				<input className='my-5 p-2 rounded-lg outline-purple-900 outline-8 outline-offset-4' placeholder='Type it here!' type='text' id='search-input' onChange={filterProducts} />
+				<select className='p-2 bg-white rounded-lg' onChange={filterProductsByCategory}>
 					<option value='0'>All</option>
 					<option value='1'>Clothes</option>
 					<option value='2'>Food</option>
@@ -41,7 +41,7 @@ export default function Home() {
 					<option value='6'>Sporting Goods</option>
 				</select>
 			</form>
-			<div className='w-full flex flex-wrap justify-center'>
+			<div className='w-full flex flex-wrap justify-center px-36'>
 				{filteredProducts.map((product, index) => <Product key={index} product={product} />)}
 			</div>
 		</div>

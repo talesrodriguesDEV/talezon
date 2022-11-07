@@ -33,16 +33,16 @@ export default function Login() {
 	};
 
 	return (
-		<div>
-			<form className='flex flex-col' onSubmit={handleLogIn}>
-				<h1>Welcome to Talezon!</h1>
+		<div className='w-full flex justify-center'>
+			<form className='flex flex-col w-2/3 xl:w-1/3 text-purple-900' onSubmit={handleLogIn}>
+				<h1 className='text-center text-5xl mb-16'>Welcome to Talezon!</h1>
 				<label>What's your name? </label>
-				<input type='text' onChange={({ target }) => setName(target.value)} />
+				<input className='my-3 p-2 rounded-lg outline-purple-900 outline-8 outline-offset-4' type='text' onChange={({ target }) => setName(target.value)} />
 				<label>What's your email: </label>
-				<input type='email' onChange={({ target }) => setEmail(target.value)} />
+				<input className='my-3 p-2 rounded-lg outline-purple-900 outline-8 outline-offset-4' type='email' onChange={({ target }) => setEmail(target.value)} />
 				<label>Define a password: </label>
-				<input type='password' onChange={({ target }) => setPassword(target.value)} />
-				<button type='submit'>
+				<input className='my-3 p-2 rounded-lg outline-purple-900 outline-8 outline-offset-4' type='password' onChange={({ target }) => setPassword(target.value)} />
+				<button className='bg-purple-900 hover:bg-purple-700 text-white py-2 rounded-lg mt-5' type='submit'>
 					Start shopping!
 				</button>
 			</form>

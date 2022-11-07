@@ -27,23 +27,31 @@ export default function Customer() {
   }, []);
 
   if (savedCustomer) return (
-    <div className='flex justify-around'>
-      <div>
-        <h1>Hi, {savedCustomer.name}!</h1>
-        <p>Email: {savedCustomer.email}</p>
-        <input value={savedCustomer.password} disabled type={passOrText} />
-        {passOrText === 'password' ? <BsEyeFill onClick={() => togglePassword('text')} /> : <BsEyeSlashFill onClick={() => togglePassword('password')} />}
+    <div className='mt-14 flex flex-col items-center text-purple-900'>
+      <div className='flex flex-col w-96 mb-24 text-xl'>
+        <h1 className='text-3xl mb-5'>Hi, {savedCustomer.name}!</h1>
+        <label className='w-full flex justify-between items-center' htmlFor='email'>
+          Email:
+          <input id='email' disabled className='w-56 my-2 ml-3 p-2 rounded-lg bg-white' value={savedCustomer.email} />
+        </label>
+        <label className='w-full flex justify-between items-center' htmlFor='password'>
+          Password:
+          {passOrText === 'password' ? <BsEyeFill onClick={() => togglePassword('text')} /> : <BsEyeSlashFill onClick={() => togglePassword('password')} />}
+          <input id='password' className='w-56 my-2 p-2 rounded-lg bg-white' value={savedCustomer.password} disabled type={passOrText} />
+        </label>
       </div>
       <div>
-        <h1>You've bought:</h1>
-        {boughtItems && boughtItems.map(({ name, price, updated }, index) => {
-          const date = new Date(updated);
-          return (
-            <div key={index}>
-              {`${name} - $ ${price.toFixed(2)} - ${date.toUTCString()}`}
-            </div>
-          )
-        })}
+        <h1 className='text-3xl mb-6'>You've bought:</h1>
+        <ol className='list-decimal list-inside'>
+          {boughtItems && boughtItems.map(({ name, price, updated }, index) => {
+            const date = new Date(updated);
+            return (
+              <li className='mb-4 text-xl' key={index}>
+                {`${name} - $ ${price.toFixed(2)} - ${date.toUTCString()}`}
+              </li>
+            )
+          })}
+        </ol>
       </div>
     </div>
   );

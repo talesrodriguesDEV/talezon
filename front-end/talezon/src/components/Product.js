@@ -15,11 +15,10 @@ export default function Product({ product: { id, name, price } }) {
 	};
 
 	return (
-		<div className='p-4 m-2 border bg-black text-white rounded-xl'>
+		<div className='p-4 m-4 shadow-lg shadow-purple-700 bg-purple-900 text-white rounded-xl flex flex-col'>
       <h1 className='text-center'>{ name }: {`R$ ${price.toFixed(2)}`}</h1>
-      <br />
-      <img src={`./images/${name}.jpeg`} alt={ name } className='w-64 rounded-xl' />
-			<button onClick={addToCart}>
+      <img src={`./images/${name}.jpeg`} alt={ name } className='w-64 rounded-xl my-4' />
+			<button onClick={addToCart} className='bg-purple-900 hover:bg-purple-700 border-white border text-white p-2 rounded-lg'>
 				Add to Cart
 			</button>
 		</div>
