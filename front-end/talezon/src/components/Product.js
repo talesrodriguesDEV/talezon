@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductsContext from '../context/ProductsContext';
 
-export default function Product({ product: { name, price } }) {
+export default function Product({ product: { id, name, price } }) {
 	const { cartProducts, setCartProducts, customerLoggedIn } = useContext(ProductsContext);
 
 	const navigate = useNavigate();
 
 	const addToCart = () => {
 		if (!customerLoggedIn) navigate('/login');
-		const newCartProducts = [...cartProducts, { name, price }];
+		const newCartProducts = [...cartProducts, { id, name, price }];
 		setCartProducts(newCartProducts);
 		localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
 	};

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs'
 
 export default function Customer() {
   const [savedCustomer, setSavedCustomer] = useState();
+  const [boughtItems, setBoughtItems] = useState();
+  const [passOrText, togglePassword] = useState('password');
 
   useEffect(() => {
     const savedToken = localStorage.getItem('customerToken');
@@ -20,14 +23,28 @@ export default function Customer() {
         body: JSON.stringify({ email }),
       })
       .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then((json) => setBoughtItems(json.products));
   }, []);
 
   if (savedCustomer) return (
-    <div>
-      <h1>Hi, {savedCustomer.name}!</h1>
-      <p>Email: {savedCustomer.email}</p>
-      <p>Password: {savedCustomer.password}</p>
+    <div className='flex justify-around'>
+      <div>
+        <h1>Hi, {savedCustomer.name}!</h1>
+        <p>Email: {savedCustomer.email}</p>
+        <input value={savedCustomer.password} disabled type={passOrText} />
+        {passOrText === 'password' ? <BsEyeFill onClick={() => togglePassword('text')} /> : <BsEyeSlashFill onClick={() => togglePassword('password')} />}
+      </div>
+      <div>
+        <h1>You've bought:</h1>
+        {boughtItems && boughtItems.map(({ name, price, updated }, index) => {
+          const date = new Date(updated);
+          return (
+            <div key={index}>
+              {`${name} - $ ${price.toFixed(2)} - ${date.toUTCString()}`}
+            </div>
+          )
+        })}
+      </div>
     </div>
   );
 }

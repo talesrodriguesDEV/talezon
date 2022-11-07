@@ -3,7 +3,7 @@ import ProductsContext from '../context/ProductsContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-	const { setCustomerInfo, setToken, setCustomerLoggedIn } = useContext(ProductsContext);
+	const { setCustomerInfo, setToken, setCustomerLoggedIn, setCustomerId } = useContext(ProductsContext);
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -22,8 +22,9 @@ export default function Login() {
 				body: JSON.stringify({ name, email, password }),
 			})
 			.then((response) => response.json())
-			.then(({ token }) => {
+			.then(({ id, token }) => {
 				setCustomerLoggedIn(true);
+				setCustomerId(id);
 				setToken(token);
 				localStorage.setItem('customerToken', token);
 			});
