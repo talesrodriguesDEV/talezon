@@ -13,6 +13,7 @@ export default function Cart() {
 	useEffect(() => {
 		const cartProducts = JSON.parse(localStorage.getItem('cartProducts'));
 		if (cartProducts) setCartProducts(cartProducts);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const removeItem = (name) => {
