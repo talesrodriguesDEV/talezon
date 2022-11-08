@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
 import ProductsContext from '../context/ProductsContext';
 import { useNavigate } from 'react-router-dom';
-import dotenv from 'dotenv';
 
-dotenv.config();
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 export default function Login() {
 	const { setCustomerInfo, setToken, setCustomerLoggedIn, setCustomerId } = useContext(ProductsContext);
@@ -18,7 +17,7 @@ export default function Login() {
 		localStorage.setItem('customerInfo', JSON.stringify({ name, email, password }));
 
 		fetch(
-			`${process.env.API_URL}/signIn`,
+			`${API_URL}/signIn`,
 			{
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },

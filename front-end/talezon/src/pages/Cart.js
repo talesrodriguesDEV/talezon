@@ -2,9 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import ProductsContext from '../context/ProductsContext';
 import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
-import dotenv from 'dotenv';
 
-dotenv.config();
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 export default function Cart() {
 	const { cartProducts, setCartProducts, customerId, token } = useContext(ProductsContext);
@@ -25,7 +24,7 @@ export default function Cart() {
 	const handleBuy = () => {
 		cartProducts.forEach(({ id }) => {
 			fetch(
-				`${process.env.API_URL}products/buy`,
+				`${API_URL}products/buy`,
 				{
 					method: 'POST',
 					headers: {

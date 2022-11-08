@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs'
-import dotenv from 'dotenv';
 
-dotenv.config();
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 export default function Customer() {
   const [savedCustomer, setSavedCustomer] = useState();
@@ -16,7 +15,7 @@ export default function Customer() {
     setSavedCustomer(savedCustomer);
 
     fetch(
-      `${process.env.API_URL}/shoppingHistory`,
+      `${API_URL}/shoppingHistory`,
       {
         method: 'POST',
         headers: {
