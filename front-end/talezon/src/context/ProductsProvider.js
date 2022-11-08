@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductsContext from './ProductsContext';
-import API_URL from '../api-url';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default function ProductsProvider({ children }) {
 	const [allProducts, setAllProducts] = useState([]);
@@ -12,7 +14,7 @@ export default function ProductsProvider({ children }) {
 	const [customerId, setCustomerId] = useState();
 
 	useEffect(() => {
-		fetch(`${API_URL}/products`)
+		fetch(`${process.env.API_URL}/products`)
 			.then((response) => response.json())
 			.then((json) => setAllProducts(json));
 
