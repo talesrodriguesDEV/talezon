@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs'
+import API_URL from '../api-url';
 
 export default function Customer() {
   const [savedCustomer, setSavedCustomer] = useState();
@@ -13,7 +14,7 @@ export default function Customer() {
     setSavedCustomer(savedCustomer);
 
     fetch(
-      'http://localhost:3000/customers/shoppingHistory',
+      `${API_URL}/shoppingHistory`,
       {
         method: 'POST',
         headers: {

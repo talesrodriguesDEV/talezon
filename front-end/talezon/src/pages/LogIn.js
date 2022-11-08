@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import ProductsContext from '../context/ProductsContext';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../api-url';
 
 export default function Login() {
 	const { setCustomerInfo, setToken, setCustomerLoggedIn, setCustomerId } = useContext(ProductsContext);
@@ -15,7 +16,7 @@ export default function Login() {
 		localStorage.setItem('customerInfo', JSON.stringify({ name, email, password }));
 
 		fetch(
-			'http://localhost:3000/customers/signIn',
+			`${API_URL}/signIn`,
 			{
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },

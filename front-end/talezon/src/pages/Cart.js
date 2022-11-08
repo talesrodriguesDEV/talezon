@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import ProductsContext from '../context/ProductsContext';
 import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../api-url';
 
 export default function Cart() {
 	const { cartProducts, setCartProducts, customerId, token } = useContext(ProductsContext);
@@ -22,7 +23,7 @@ export default function Cart() {
 	const handleBuy = () => {
 		cartProducts.forEach(({ id }) => {
 			fetch(
-				'http://localhost:3000/products/buy',
+				`${API_URL}products/buy`,
 				{
 					method: 'POST',
 					headers: {

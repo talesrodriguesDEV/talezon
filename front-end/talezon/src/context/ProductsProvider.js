@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductsContext from './ProductsContext';
+import API_URL from '../api-url';
 
 export default function ProductsProvider({ children }) {
 	const [allProducts, setAllProducts] = useState([]);
@@ -11,8 +12,7 @@ export default function ProductsProvider({ children }) {
 	const [customerId, setCustomerId] = useState();
 
 	useEffect(() => {
-		// https://back-end-production-0be2.up.railway.app/
-		fetch('http://localhost:3000/products')
+		fetch(`${API_URL}/products`)
 			.then((response) => response.json())
 			.then((json) => setAllProducts(json));
 
