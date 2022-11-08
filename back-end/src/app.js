@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: 'https://front-end-production-0e5c.up.railway.app/',
 }));
 app.use(express.json());
 app.use(routes);
