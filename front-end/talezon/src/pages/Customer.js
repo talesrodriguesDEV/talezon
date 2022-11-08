@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs'
 
-const API_URL = process.env.API_URL || 'http://localhost:3000';
+const API_URL = 'https://back-end-production-0be2.up.railway.app';
 
 export default function Customer() {
   const [savedCustomer, setSavedCustomer] = useState();
