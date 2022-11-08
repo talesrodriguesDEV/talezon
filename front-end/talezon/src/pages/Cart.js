@@ -25,7 +25,7 @@ export default function Cart() {
 	const handleBuy = () => {
 		cartProducts.forEach(({ id }) => {
 			fetch(
-				`${API_URL}products/buy`,
+				`${API_URL}/products/buy`,
 				{
 					method: 'POST',
 					headers: {

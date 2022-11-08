@@ -15,7 +15,7 @@ export default function Customer() {
     setSavedCustomer(savedCustomer);
 
     fetch(
-      `${API_URL}/shoppingHistory`,
+      `${API_URL}/customers/shoppingHistory`,
       {
         method: 'POST',
         headers: {

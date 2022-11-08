@@ -17,7 +17,7 @@ export default function Login() {
 		localStorage.setItem('customerInfo', JSON.stringify({ name, email, password }));
 
 		fetch(
-			`${API_URL}/signIn`,
+			`${API_URL}/customers/signIn`,
 			{
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
