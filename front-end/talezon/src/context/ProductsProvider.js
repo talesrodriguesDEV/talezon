@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductsContext from './ProductsContext';
 
-const API_URL = 'https://back-end-production-0be2.up.railway.app';
+import API_URL from '../utils/apiUrl';
 
 export default function ProductsProvider({ children }) {
 	const [allProducts, setAllProducts] = useState([]);
