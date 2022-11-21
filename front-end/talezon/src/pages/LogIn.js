@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import ProductsContext from '../context/ProductsContext';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'https://back-end-production-0be2.up.railway.app'
+import API_URL from '../utils/apiUrl';
 
 export default function Login() {
 	const { setCustomerInfo, setToken, setCustomerLoggedIn, setCustomerId } = useContext(ProductsContext);

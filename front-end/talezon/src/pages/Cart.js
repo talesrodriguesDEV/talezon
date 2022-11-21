@@ -3,7 +3,7 @@ import ProductsContext from '../context/ProductsContext';
 import { TiDelete } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = 'https://back-end-production-0be2.up.railway.app'
+import API_URL from '../utils/apiUrl';
 
 export default function Cart() {
 	const { cartProducts, setCartProducts, customerId, token } = useContext(ProductsContext);

@@ -1,5 +1,5 @@
 require('dotenv');
 const app = require('./app');
-const port = process.env.PORT;
+const nodePort = process.env.NODE_PORT;
 
-app.listen(port, () => console.log(`Running at localhost:${port}`));
+app.listen(nodePort, () => console.log(`Running at localhost:${nodePort}`));
