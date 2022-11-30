@@ -1,7 +1,29 @@
-# [Talezon](https://front-end-production-0e5c.up.railway.app/)
+# Talezon
 
-This is the frontend of a full stack e-commerce built with React.js and Node.js, 1st version. API CURRENTLY NOT DEPLOYED.
+<img src="./home.png" width=200 /> <img src="./cart.png" width=200 /> <img src="./customer.png" width=200 /> <img src="./api.png" width=200 />
 
-![Talezon - Home](./home.png)
-![Talezon - Cart](./cart.png)
-![Talezon - Customer](./customer.png)
+## Setup
+
+1.
+```
+git clone git@github.com:talesrodriguesDEV/talezon.git
+```
+
+2. Environment variables
+
+.env.example -> .env 
+
+3. Backend Setup
+```
+cd backend
+docker-compose up -d
+docker exec -it talezon_api bash
+npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all
+npm start
+```
+
+4. Frontend Setup
+```
+cd frontend
+npm start
+```
